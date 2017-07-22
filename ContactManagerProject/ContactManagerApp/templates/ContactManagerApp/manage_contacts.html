@@ -1,0 +1,16 @@
+{% extends 'ContactManagerApp/layout.html' %}
+{% block content %}
+{% if form.instance.pk %}
+ <h3 class="text-primary">Edit Contact</h3>
+{% else %}
+ <h3 class="text-primary">Create Contact</h3>
+{% endif %}
+  <form action="" method="post" class="form">
+    {% csrf_token %}
+    <table class="table">
+    {{ form }}
+    </table>
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+    <a class="btn btn-link" href="/">BackToContacts</a>
+ </form>
+{% endblock %}

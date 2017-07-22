@@ -1,0 +1,30 @@
+{% extends 'ContactManagerApp/layout.html' %}
+{% block content %}
+<a class="btn btn-primary" href="ManageContact/">Add</a><br/><br/>
+<table class="table">
+ <tr> 
+    <th>#</th>
+    <th>FirstName</th>
+    <th>LastName</th>
+    <th>Email</th>
+    <th>MobileNo</th>
+    <th>Action</th>
+ </tr>
+ {% if contact_list %}
+    
+    {% for contact in contact_list %}
+    <tr>
+       <td>{{ forloop.counter }} </td>
+       <td>{{contact.FirstName}}</td>
+       <td>{{contact.LastName}}</td>
+       <td>{{contact.Email}}</td>
+       <td>{{contact.MobileNo}}</td>
+       <td><a href="ManageContact/{{ contact.pk }}"><span class="glyphicon glyphicon-edit"></span></a> | <a href="DeleteContact/{{ contact.pk }}"><span class="glyphicon glyphicon-trash"></span></a></td>
+    </tr>
+    {% endfor %}
+   
+{% else %}
+    <p>No Contacts are available.</p>
+{% endif %}
+</table>
+{% endblock %}
